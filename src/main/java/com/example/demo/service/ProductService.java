@@ -1,5 +1,7 @@
-package com.example.demo.product;
+package com.example.demo.service;
 
+import com.example.demo.repository.ProductRepository;
+import com.example.demo.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,19 +15,19 @@ import java.util.Optional;
 @Service
 public class ProductService {
     HashMap<String, Object> datos;
-    private final ProducRepository producRepository;
+    private final ProductRepository productRepository;
 
     @Autowired
-    public ProductService(ProducRepository producRepository) {
-        this.producRepository = producRepository;
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
     }
 
     public List<Product> getProducts() {
-        return producRepository.findAll();
+        return productRepository.findAll();
     }
 
     public ResponseEntity<Object> addProduct(Product product) {
-        Optional<Product> res = producRepository.findById(product.getId());
+        Optional<Product> res = productRepository.findById(product.getId());
         datos = new HashMap<>();
 
 
@@ -41,7 +43,7 @@ public class ProductService {
         if (product.getId() != null) {
             datos.put("message", "Se actualizó con éxito");
         }
-        producRepository.save(product);
+        productRepository.save(product);
         datos.put("data", product);
 
         return new ResponseEntity<>(
@@ -59,13 +61,13 @@ public class ProductService {
             return new ResponseEntity<>(datos, HttpStatus.BAD_REQUEST);
         }
 
-        boolean existe = producRepository.existsById(id);
+        boolean existe = productRepository.existsById(id);
         if (!existe) {
             datos.put("error", true);
             datos.put("message", "No existe un producto con ese ID");
         }
 
-        Optional<Product> product = producRepository.findById(id);
+        Optional<Product> product = productRepository.findById(id);
         if (product.isPresent()) {
             datos.put("data", product.get());
             return new ResponseEntity<>(datos, HttpStatus.OK);
@@ -88,7 +90,7 @@ public class ProductService {
         }
 
         // Verificar si el producto existe
-        Optional<Product> existingProduct = producRepository.findById(product.getId());
+        Optional<Product> existingProduct = productRepository.findById(product.getId());
         if (!existingProduct.isPresent()) {
             datos.put("error", true);
             datos.put("message", "No existe un producto con ese ID");
@@ -96,7 +98,7 @@ public class ProductService {
         }
 
         // Actualizar el producto
-        Product updatedProduct = producRepository.save(product);
+        Product updatedProduct = productRepository.save(product);
         datos.put("message", "Producto actualizado con éxito");
         datos.put("data", updatedProduct);
 
@@ -106,7 +108,7 @@ public class ProductService {
 
     public ResponseEntity<Object> deleteproduct(String id) {
         datos = new HashMap<>();
-        boolean existe = this.producRepository.existsById(id);
+        boolean existe = this.productRepository.existsById(id);
         if (!existe) {
             datos.put("error", true);
             datos.put("message", "No existe un producto con ese id");
@@ -115,7 +117,7 @@ public class ProductService {
                     HttpStatus.CONFLICT
             );
         }
-        producRepository.deleteById(id);
+        productRepository.deleteById(id);
         datos.put("message", "producto eliminado");
         return new ResponseEntity<>(
                 datos,
