@@ -28,6 +28,27 @@
 			"response": []
 		},
 		{
+			"name": "get client",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/client",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"client"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "create",
 			"request": {
 				"method": "POST",
@@ -52,6 +73,67 @@
 						"api",
 						"v1",
 						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"client\",\r\n\"email\": \"This is a email\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/client",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"client"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete client",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n        \"id\": \"293e0254-aa5c-4acb-abda-80a3e9764669\"\r\n\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/client/293e0254-aa5c-4acb-abda-80a3e9764669",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"client",
+						"293e0254-aa5c-4acb-abda-80a3e9764669"
 					]
 				}
 			},
@@ -130,6 +212,36 @@
 		},
 		{
 			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"id\": \"1ebaf2a6-2317-4b97-8ae6-e53fd938a61f\",\r\n        \"name\": \"update\",\r\n        \"description\": \"update is a product\",\r\n        \"price\": 300.0\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update client",
 			"request": {
 				"method": "PUT",
 				"header": [],
