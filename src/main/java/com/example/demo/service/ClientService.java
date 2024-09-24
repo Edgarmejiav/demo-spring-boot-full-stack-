@@ -34,22 +34,15 @@ public class ClientService {
         if (res.isPresent() && client.getId() == null) {
             datos.put("error", true);
             datos.put("message", "Ya existe un client con ese nombre");
-            return new ResponseEntity<>(
-                    datos,
-                    HttpStatus.CONFLICT
-            );
+            return new ResponseEntity<>(datos, HttpStatus.CONFLICT);
         }
-        datos.put("message", "Se guardadó con éxito");
         if (client.getId() != null) {
-            datos.put("message", "Se actualizó con éxito");
+            datos.put("message", "Se guardadó con éxito");
         }
         clientRepository.save(client);
         datos.put("data", client);
 
-        return new ResponseEntity<>(
-                datos,
-                HttpStatus.CREATED
-        );
+        return new ResponseEntity<>(datos, HttpStatus.CREATED);
     }
 
     public ResponseEntity<Object> getClient(String id) {
@@ -78,7 +71,6 @@ public class ClientService {
         }
     }
 
-
     public ResponseEntity<Object> updateClient(Client client) {
         Map<String, Object> datos = new HashMap<>();
 
@@ -102,24 +94,17 @@ public class ClientService {
         return new ResponseEntity<>(datos, HttpStatus.OK);
     }
 
-
     public ResponseEntity<Object> deleteclient(String id) {
         datos = new HashMap<>();
         boolean existe = this.clientRepository.existsById(id);
         if (!existe) {
             datos.put("error", true);
             datos.put("message", "No existe un client con ese id");
-            return new ResponseEntity<>(
-                    datos,
-                    HttpStatus.CONFLICT
-            );
+            return new ResponseEntity<>(datos, HttpStatus.CONFLICT);
         }
         clientRepository.deleteById(id);
         datos.put("message", "client eliminado");
-        return new ResponseEntity<>(
-                datos,
-                HttpStatus.ACCEPTED
-        );
+        return new ResponseEntity<>(datos, HttpStatus.ACCEPTED);
     }
 
 

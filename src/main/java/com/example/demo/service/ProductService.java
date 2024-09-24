@@ -34,22 +34,15 @@ public class ProductService {
         if (res.isPresent() && product.getId() == null) {
             datos.put("error", true);
             datos.put("message", "Ya existe un producto con ese nombre");
-            return new ResponseEntity<>(
-                    datos,
-                    HttpStatus.CONFLICT
-            );
+            return new ResponseEntity<>(datos, HttpStatus.CONFLICT);
         }
-        datos.put("message", "Se guardadó con éxito");
         if (product.getId() != null) {
-            datos.put("message", "Se actualizó con éxito");
+            datos.put("message", "Se guardadó con éxito");
         }
         productRepository.save(product);
         datos.put("data", product);
 
-        return new ResponseEntity<>(
-                datos,
-                HttpStatus.CREATED
-        );
+        return new ResponseEntity<>(datos, HttpStatus.CREATED);
     }
 
     public ResponseEntity<Object> getProduct(String id) {
@@ -78,7 +71,6 @@ public class ProductService {
         }
     }
 
-
     public ResponseEntity<Object> updateProduct(Product product) {
         Map<String, Object> datos = new HashMap<>();
 
@@ -105,26 +97,18 @@ public class ProductService {
         return new ResponseEntity<>(datos, HttpStatus.OK);
     }
 
-
     public ResponseEntity<Object> deleteproduct(String id) {
         datos = new HashMap<>();
         boolean existe = this.productRepository.existsById(id);
         if (!existe) {
             datos.put("error", true);
             datos.put("message", "No existe un producto con ese id");
-            return new ResponseEntity<>(
-                    datos,
-                    HttpStatus.CONFLICT
-            );
+            return new ResponseEntity<>(datos, HttpStatus.CONFLICT);
         }
         productRepository.deleteById(id);
         datos.put("message", "producto eliminado");
-        return new ResponseEntity<>(
-                datos,
-                HttpStatus.ACCEPTED
-        );
+        return new ResponseEntity<>(datos, HttpStatus.ACCEPTED);
     }
-
 
 
 }
