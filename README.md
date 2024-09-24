@@ -29,7 +29,7 @@ Crear una aplicación de gestión de pedidos para un sistema de comercio electr�
 -[ ] **Base de Datos No Relacional**: MongoDB
 -[x] **Backend**: Java Spring Boot
 -[ ] **Reactivo**: Spring WebFlux
--[ ] **Frontend**: Angular 15 o superior
+-[x] **Frontend**: Angular 15 o superior
 
 ## Task List
 
