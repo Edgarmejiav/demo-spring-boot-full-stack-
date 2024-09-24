@@ -1,31 +1,23 @@
-import {ApplicationConfig, inject, Injectable} from '@angular/core';
+import { inject, Injectable} from '@angular/core';
 import {Product} from "../interface/product.model";
-import {HttpClient, HttpHeaders, provideHttpClient, withJsonpSupport} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Accept': 'application/json'  // Asegura que la respuesta sea JSON
-  })
-};
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class ProductsService {
-  // private apiUrl = 'api';
-  private apiUrl = 'http://localhost:8080/api/v1/products';
   http = inject(HttpClient);
+  private apiUrl = 'http://localhost:8080/api/v1/products';
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.apiUrl, httpOptions);
+    return this.http.get<Product[]>(this.apiUrl);
   }
 
   getProduct(id: string): Observable<Product> {
-    return this.http.get<Product>(`${this.apiUrl}/getProduct?id=42e4afab-d3d8-472f-b108-0321ba602fbb`, httpOptions);
+    return this.http.get<Product>(`${this.apiUrl}/getProduct?id=42e4afab-d3d8-472f-b108-0321ba602fbb`);
   }
 
   addProduct(product: Product): Observable<Product> {

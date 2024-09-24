@@ -1,7 +1,17 @@
-<p>product works!</p>
-
-<ul>
-  <li *ngFor="let product of products; let i = index">
-    {{ product.name }} - {{ product.description }} - {{ product.price }}
-  </li>
-</ul>
+<div class="container">
+  <div  *ngFor="let product of products; let i = index">
+    <div class="card">
+      <img
+        src="https://www.apple.com/la/iphone-16/images/overview/product-viewer/iphone/all_colors__flhn5cmb1t26_xlarge.jpg"
+        class="card-img-top" alt="{{ product.name }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">{{ product.description }}</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <span class="text-muted"> $ {{ product.price }}</span>
+        </div>
+        <button class=" btn-primary">comprar ahora</button>
+      </div>
+    </div>
+  </div>
+</div>
