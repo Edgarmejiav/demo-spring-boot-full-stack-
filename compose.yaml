@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   postgres:
     image: 'postgres:latest'
@@ -7,11 +9,35 @@ services:
       - 'POSTGRES_USER=myuser'
     ports:
       - '5432:5432'
-  mongodb:
+    volumes:
+      - 'postgres-data:/var/lib/postgresql/data'
+  mongo-server:
     image: 'mongo:latest'
-    environment:
-      - 'MONGO_INITDB_DATABASE=mydatabase'
-      - 'MONGO_INITDB_ROOT_PASSWORD=F'
-      - 'MONGO_INITDB_ROOT_USERNAME=root'
+    container_name: 'mongo-server'
+    restart: 'always'
     ports:
       - '27017:27017'
+    volumes:
+      - 'mongo-data:/data/db'
+    networks:
+      - 'mongodb-network'
+
+  mongo-client:
+    image: 'mongo-express:latest'
+    container_name: 'mongo-client'
+    restart: 'always'
+    depends_on:
+      - 'mongo-server'
+    environment:
+      - 'ME_CONFIG_MONGODB_SERVER=mongo-server'
+      - 'ME_CONFIG_MONGODB_PORT=27017'
+    networks:
+      - 'mongodb-network'
+    ports:
+      - '8081:8081'
+volumes:
+   mongo-data:
+   postgres-data:
+
+networks:
+   mongodb-network:
