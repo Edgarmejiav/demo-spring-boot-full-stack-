@@ -1,32 +1,95 @@
-[
-  {
-    "name": "iPhone 11",
-    "description": "This is the iPhone 11, featuring a dual-camera system, A13 Bionic chip, and all-day battery life.",
-    "price": 200
-  },
-  {
-    "name": "iPhone 12",
-    "description": "This is the iPhone 12, featuring a Super Retina XDR display, 5G support, and Ceramic Shield for better durability.",
-    "price": 300
-  },
-  {
-    "name": "iPhone 13",
-    "description": "This is the iPhone 13, featuring an A15 Bionic chip, improved dual-camera system, and longer battery life.",
-    "price": 400
-  },
-  {
-    "name": "iPhone 14",
-    "description": "This is the iPhone 14, with an advanced dual-camera system, faster performance, and improved durability.",
-    "price": 500
-  },
-  {
-    "name": "iPhone 15",
-    "description": "This is the iPhone 15, featuring Dynamic Island, advanced camera capabilities, and USB-C charging.",
-    "price": 600
-  },
-  {
-    "name": "iPhone 16",
-    "description": "This is the iPhone 16, with a next-generation A17 chip, ProMotion display, and all-day battery life.",
-    "price": 700
-  }
-]
+{
+  "products": [
+    {
+      "name": "iPhone 11",
+      "description": "This is the iPhone 11, featuring a dual-camera system, A13 Bionic chip, and all-day battery life.",
+      "price": 200
+    },
+    {
+      "name": "iPhone 12",
+      "description": "This is the iPhone 12, featuring a Super Retina XDR display, 5G support, and Ceramic Shield for better durability.",
+      "price": 300
+    },
+    {
+      "name": "iPhone 13",
+      "description": "This is the iPhone 13, featuring an A15 Bionic chip, improved dual-camera system, and longer battery life.",
+      "price": 400
+    },
+    {
+      "name": "iPhone 14",
+      "description": "This is the iPhone 14, with an advanced dual-camera system, faster performance, and improved durability.",
+      "price": 500
+    },
+    {
+      "name": "iPhone 15",
+      "description": "This is the iPhone 15, featuring Dynamic Island, advanced camera capabilities, and USB-C charging.",
+      "price": 600
+    },
+    {
+      "name": "iPhone 16",
+      "description": "This is the iPhone 16, with a next-generation A17 chip, ProMotion display, and all-day battery life.",
+      "price": 700
+    }
+  ],
+  "orders": [
+    {
+      "client": {
+        "name": "Alice Johnson",
+        "email": "alice.johnson@example.com"
+      },
+      "products": [
+        {
+          "name": "iPhone 11",
+          "description": "This is the iPhone 11, featuring a dual-camera system, A13 Bionic chip, and all-day battery life.",
+          "price": 200
+        }
+      ],
+      "total": 200
+    },
+    {
+
+      "client": {
+        "name": "Bob Smith",
+        "email": "bob.smith@example.com"
+      },
+      "products": [
+        {
+          "name": "iPhone 12",
+          "description": "This is the iPhone 12, featuring a Super Retina XDR display, 5G support, and Ceramic Shield for better durability.",
+          "price": 300
+        },
+        {
+          "name": "iPhone 13",
+          "description": "This is the iPhone 13, featuring an A15 Bionic chip, improved dual-camera system, and longer battery life.",
+          "price": 400
+        }
+      ],
+      "total": 700
+    },
+    {
+
+      "client": {
+        "name": "Charlie Brown",
+        "email": "charlie.brown@example.com"
+      },
+      "products": [
+        {
+          "name": "iPhone 14",
+          "description": "This is the iPhone 14, with an advanced dual-camera system, faster performance, and improved durability.",
+          "price": 500
+        },
+        {
+          "name": "iPhone 15",
+          "description": "This is the iPhone 15, featuring Dynamic Island, advanced camera capabilities, and USB-C charging.",
+          "price": 600
+        },
+        {
+          "name": "iPhone 16",
+          "description": "This is the iPhone 16, with a next-generation A17 chip, ProMotion display, and all-day battery life.",
+          "price": 700
+        }
+      ],
+      "total": 1800
+    }
+  ]
+}
