@@ -19,10 +19,12 @@ public class ClientService {
 
     @Autowired
     public ClientService(ClientRepository clientRepository) {
+
         this.clientRepository = clientRepository;
     }
 
     public List<Client> getClients() {
+
         return clientRepository.findAll();
     }
 
